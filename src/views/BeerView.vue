@@ -9,6 +9,7 @@
         <p> {{beer.description}} </p>
       </div>
     </div>
+    <v-divider></v-divider>
     <div class="content">
       <v-simple-table dense dark class="table">
         <tbody>
@@ -54,6 +55,7 @@
           </tr>
         </tbody>
       </v-simple-table>
+      <v-divider vertical></v-divider>
       <div class="pa-5">
         <h3 class="mb-4">Ingredients</h3>
         <h5>Malt</h5>
@@ -69,6 +71,8 @@
         <h5>Yeast</h5>
         <span class="ml-1">{{beer.ingredients.yeast}}</span>
       </div>
+
+      <v-divider vertical></v-divider>
       <div class="max-width pa-5" >
         <h3 class="mb-4">Method</h3>
         <h5>Mash</h5>
@@ -82,6 +86,8 @@
         <span class="ml-1 twist">{{beer.method.twist}}</span>
       </div>
     </div>
+
+    <v-divider class="mt-5"></v-divider>
     <div class="pa-5">
       <h3>Food pairing</h3>
       <ul>
@@ -151,7 +157,7 @@ export default Vue.extend({
   justify-content: space-around;
 }
 
-@media (max-width: 40em) {
+@media (max-width: 50em) {
   .content {
     flex-direction: column;
   }
@@ -163,7 +169,7 @@ export default Vue.extend({
   border-radius: 2px;
 }
 
-@media (max-width: 40em) {
+@media (max-width: 50em) {
   .table {
     width: 90%;
     margin: auto;

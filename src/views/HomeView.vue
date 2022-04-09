@@ -109,6 +109,7 @@
         :key="id"
         elevation="1"
         :to="`/beer/${id}`"
+        class="indigo lighten-5"
       >
         <div class="list-item">
           <div class="list-item-header">
@@ -122,7 +123,7 @@
               <img :src="image_url">
             </div>
           </div>
-          <div class="list-item-content">
+          <div class="list-item-content indigo lighten-4">
             {{description}}
           </div>
         </div>
@@ -275,7 +276,6 @@ body{
 }
 
 .list-item-content {
-  background-color: #f0f1f6;
   border-radius: 5px;
   padding: .5em;
   margin-top: 1em;
