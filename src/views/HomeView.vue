@@ -101,6 +101,8 @@
 
 
     </div>
+
+    <p class="click mt-4">Click on card for more details</p>
     <div class="list">
       <v-card
         v-for="{ name, id, tagline, image_url, description } in beers"
@@ -231,6 +233,9 @@ body{
   padding: 1em;
   margin-left: 18em;
 }
+.click {
+  margin-left: 19em;
+}
 
 .list-item {
   display: flex;
@@ -296,6 +301,7 @@ body{
 }
 
 .side {
+  display: block;
   position: fixed;
   height: calc(100% - 6em);
   background-color: primary;
@@ -305,6 +311,18 @@ body{
   overflow-y: auto;
   left: 1em;
   max-width: 17em;
+}
+
+@media (max-width: 40em) {
+  .side {
+    display: none;
+  }
+  .click {
+    margin-left: 1em;
+  }
+  .list {
+    margin-left: 0;
+  }
 }
 
 .filter-button {

@@ -15,7 +15,7 @@
           width="40"
         />
 
-        <h1>PunkApi Vuejs</h1>
+        <h1>PunkApi</h1>
       </div>
 
       <v-spacer></v-spacer>

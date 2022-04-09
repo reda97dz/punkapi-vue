@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="!fetching">
-    <div class="header">
+    <div class="header pa-5">
       <img :src="beer.image_url" :alt="beer.name" class="image">
       <div>
         <h1>{{beer.name}}</h1>
@@ -54,25 +54,25 @@
           </tr>
         </tbody>
       </v-simple-table>
-      <div>
+      <div class="pa-5">
         <h3 class="mb-4">Ingredients</h3>
         <h5>Malt</h5>
-        <div :key="item.name" v-for="item in beer.ingredients.malt" class="ingredient ml-1">
+        <div :key="i+Math.random()" v-for="(item, i) in beer.ingredients.malt" class="ingredient ml-1">
           <span> {{item.name}} </span>
           <span class="ml-10">  {{item.amount.value}} {{item.amount.unit}} </span>
         </div>
         <h5>Hops</h5>
-        <div :key="item.name" v-for="item in beer.ingredients.hops" class="ingredient ml-1">
+        <div :key="i+Math.random()" v-for="(item, i) in beer.ingredients.hops" class="ingredient ml-1">
           <span> {{item.name}} ({{item.attribute}}) </span>
           <span> {{item.amount.value}} {{item.amount.unit}} </span>
         </div>
         <h5>Yeast</h5>
         <span class="ml-1">{{beer.ingredients.yeast}}</span>
       </div>
-      <div class="max-width">
+      <div class="max-width pa-5" >
         <h3 class="mb-4">Method</h3>
         <h5>Mash</h5>
-        <div :key="i" v-for="(item, i) in beer.method.mash_temp" class="ml-1">
+        <div :key="i+Math.random()" v-for="(item, i) in beer.method.mash_temp" class="ml-1">
           <span> {{item.temp.value}} {{item.temp.unit}} </span>
           <span class="ml-10"> {{item.duration}}' </span>
         </div>
@@ -82,10 +82,10 @@
         <span class="ml-1 twist">{{beer.method.twist}}</span>
       </div>
     </div>
-    <div class="mt-6">
+    <div class="pa-5">
       <h3>Food pairing</h3>
       <ul>
-        <li :key="item" v-for="item in beer.food_pairing">{{item}}</li>
+        <li :key="i+Math.random()" v-for="(item, i) in beer.food_pairing">{{item}}</li>
       </ul>
       <h3 class="mt-2">Tips</h3>
       <p>{{beer.brewers_tips}}</p>
@@ -147,14 +147,27 @@ export default Vue.extend({
 .content {
   margin-top: 1em;
   display: flex;
-  flex-direction: flex;
+  flex-direction: row;
   justify-content: space-around;
+}
+
+@media (max-width: 40em) {
+  .content {
+    flex-direction: column;
+  }
 }
 
 .table {
   width: 18%;
   border: 1px solid black;
   border-radius: 2px;
+}
+
+@media (max-width: 40em) {
+  .table {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .ingredient {
