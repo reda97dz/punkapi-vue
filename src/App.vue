@@ -21,7 +21,7 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/reda97dz/punkapi-vuet"
+        href="https://github.com/reda97dz/punkapi-vue"
         target="_blank"
         text
       >
