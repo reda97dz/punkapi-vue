@@ -185,9 +185,7 @@
         this.fetchBeers()
       },
 
-      async fetchBeers() {
-        console.log(this.abv[0]);
-        
+      async fetchBeers() {        
         const params: ParamObject = { page: this.page, per_page: this.per_page };
         if(this.name) params["beer_name"] = this.name.split(" ").join("_")
         if(this.yeast) params["yeast"] = this.yeast.split(" ").join("_")
