@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="side primary"> 
+    <div class="side primary"> 
       <button class="filter-button" type="button" v-on:click="fetchBeers()">Filter</button>
 
       <label for="beername">Beer name</label>
@@ -100,7 +100,7 @@
 
 
 
-    </v-container>
+    </div>
     <div class="list">
       <v-card
         v-for="{ name, id, tagline, image_url, description } in beers"
@@ -140,15 +140,8 @@
 <script lang="ts">
   import Vue from 'vue'
   import axios from 'axios'
-  import HelloWorld from '../components/HelloWorld.vue'
 
   export default Vue.extend({
-    name: 'Home',
-
-    components: {
-      HelloWorld,
-    },
-
     data() {
       return {
         beers: [],
@@ -191,6 +184,7 @@
       },
 
       async fetchBeers() {
+        console.log(this.abv[0]);
         
         const params: ParamObject = { page: this.page, per_page: this.per_page };
         if(this.name) params["beer_name"] = this.name.split(" ").join("_")
@@ -303,7 +297,6 @@ body{
 
 .side {
   position: fixed;
-  width: 17em;
   height: calc(100% - 6em);
   background-color: primary;
   padding: 0.5em;
@@ -311,6 +304,7 @@ body{
   top: 5em;
   overflow-y: auto;
   left: 1em;
+  max-width: 17em;
 }
 
 .filter-button {
