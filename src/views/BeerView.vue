@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="!fetching">
     <div class="header">
       <img :src="beer.image_url" :alt="beer.name" class="image">
       <div>
@@ -69,17 +69,17 @@
         <h5>Yeast</h5>
         <span class="ml-1">{{beer.ingredients.yeast}}</span>
       </div>
-      <div>
+      <div class="max-width">
         <h3 class="mb-4">Method</h3>
         <h5>Mash</h5>
-        <div :key="i" v-for="(item, i) in beer.method.mash_temp" class="ingredient ml-1">
+        <div :key="i" v-for="(item, i) in beer.method.mash_temp" class="ml-1">
           <span> {{item.temp.value}} {{item.temp.unit}} </span>
           <span class="ml-10"> {{item.duration}}' </span>
         </div>
         <h5>Fermentation</h5>
         <span class="ml-1">{{beer.method.fermentation.temp.value}} {{beer.method.fermentation.temp.unit}}</span>
         <h5>Twist</h5>
-        <span class="ml-1">{{beer.method.twist}}</span>
+        <span class="ml-1 twist">{{beer.method.twist}}</span>
       </div>
     </div>
     <div class="mt-6">
@@ -100,6 +100,7 @@ export default Vue.extend({
   data() {
     return {
       beer: {},
+      fetching: true,
     }
   },
   mounted() {
@@ -107,9 +108,11 @@ export default Vue.extend({
   },
   methods: {
     async fetchBeer() {
+      this.fetching = true;
       try {
         const response = await axios.get(`https://api.punkapi.com/v2/beers/${this.$route.params.id}`)
         this.beer = response.data[0]
+        this.fetching = false
       } catch(error) {
         console.log(error);
         
@@ -144,7 +147,7 @@ export default Vue.extend({
 .content {
   margin-top: 1em;
   display: flex;
-  flex-direction: row;
+  flex-direction: flex;
   justify-content: space-around;
 }
 
@@ -160,4 +163,7 @@ export default Vue.extend({
   justify-content: space-between;
 }
 
+.max-width{
+  max-width: 25em;
+}
 </style>
