@@ -109,7 +109,7 @@
         :key="id"
         elevation="1"
         :to="`/beer/${id}`"
-        class="indigo lighten-5"
+        class="grey lighten-4"
       >
         <div class="list-item">
           <div class="list-item-header">
@@ -123,7 +123,7 @@
               <img :src="image_url">
             </div>
           </div>
-          <div class="list-item-content indigo lighten-4">
+          <div class="list-item-content indigo lighten-5">
             {{description}}
           </div>
         </div>
